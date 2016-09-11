@@ -24,8 +24,9 @@ A set of streams that provide and tranform data from [wheretheiss.at/](http://wh
 	const rateStream = new satStrs.RateStream();
 	
 	satStream.pipe(rateStream);
+	```
 	
-### Demo
+###Demo
 
 For a demo run ``node example.js``.	
 	
