@@ -15,7 +15,7 @@ A set of streams that provide and tranform data from [wheretheiss.at/](http://wh
 	const satStr = new SateliteStream({ rate: 1000, id: 25544 });
 	```
 
-* **RateStream**: A transform stream that calculates latitude and longitude rates given a SateliteStream input. Initialize with ``new RateStream``: 
+* **RateStream**: A transform stream that calculates latitude and longitude rates given a SateliteStream input. Initialize with ``new RateStream()``: 
 
 	```
 	const satStrs = require('./');
