@@ -1,4 +1,4 @@
-const satStrs = require('./src/main.js');
+const satStrs = require('./');
 const Transform = require('stream').Transform;
 const prettyjson = require('prettyjson');
 
