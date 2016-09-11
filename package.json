@@ -1,0 +1,19 @@
+{
+  "name": "satelite-streams",
+  "version": "1.0.0",
+  "description": "A set of streams for emitting and processsing streams giving satelite locations",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Noah Muldavin <nmuldavin@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.74.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "prettyjson": "^1.1.3"
+  }
+}
