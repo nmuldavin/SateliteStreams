@@ -2,13 +2,13 @@ const Readable = require('stream').Readable;
 const request = require('request');
 
 /**
- * Satelite Stream class
+ * Satellite Stream class
  * @class
  * @extends stream.Readable
  */
-class SateliteStream extends Readable {
+class SatelliteStream extends Readable {
   /**
-   * Satelite Stream constructor
+   * Satellite Stream constructor
    * @constructor
    * @param {Object} Options object with id and rate
    */
@@ -19,7 +19,7 @@ class SateliteStream extends Readable {
   }
 
   /**
-   * Makes call to get satelite info
+   * Makes call to get satellite info
    */
   _getSatInfo() {
     const url = `https://api.wheretheiss.at/v1/satellites/${this.id}`;
@@ -46,4 +46,4 @@ class SateliteStream extends Readable {
   }
 }
 
-module.exports = SateliteStream;
+module.exports = SatelliteStream;

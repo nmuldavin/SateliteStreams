@@ -3,7 +3,7 @@ const Transform = require('stream').Transform;
 const prettyjson = require('prettyjson');
 
 /**
- * Transform stream to prettyjson print objects
+ * Transform stream to prettyjson-print objects
  */
 class PrettyJsonStream extends Transform {
   constructor() {
@@ -19,7 +19,7 @@ class PrettyJsonStream extends Transform {
   }
 }
 
-const satStream = new satStrs.SateliteStream({ rate: 1000, id: 25544 });
+const satStream = new satStrs.SatelliteStream({ rate: 1000, id: 25544 });
 const rateStream = new satStrs.RateStream();
 const prettyJsonStream = new PrettyJsonStream();
 

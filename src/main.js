@@ -1,7 +1,7 @@
-const SateliteStream = require('./SateliteStream');
+const SatelliteStream = require('./SatelliteStream');
 const RateStream = require('./RateStream');
 
 module.exports = {
-  SateliteStream,
+  SatelliteStream,
   RateStream,
 };

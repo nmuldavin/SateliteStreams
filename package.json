@@ -1,8 +1,8 @@
 {
-  "name": "satelite-streams",
+  "name": "satellite-streams",
   "version": "1.0.0",
-  "description": "A set of streams for emitting and processsing streams giving satelite locations",
-  "repository": "nmuldavin/SateliteStreams",
+  "description": "A set of streams for emitting and processsing streams giving satellite locations",
+  "repository": "nmuldavin/SatelliteStreams",
   "main": "src/main.js",
   "scripts": {
     "test": "mocha"

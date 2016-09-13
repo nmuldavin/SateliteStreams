@@ -1,15 +1,15 @@
-const SateliteStream = require('../src/SateliteStream');
+const SatelliteStream = require('../src/SatelliteStream');
 const Writable = require('stream').Writable;
 const expect = require('chai').expect;
 
-describe('Satelite Stream', () => {
+describe('Satellite Stream', () => {
   let satStream;
   let countStream;
 
   /**
-   * Subclasses SateliteStream with overriden call method that increments count
+   * Subclasses SatelliteStream with overriden call method that increments count
    */
-  class FakeSatStream extends SateliteStream {
+  class FakeSatStream extends SatelliteStream {
     constructor(options) {
       super(options);
       this.count = 0;
