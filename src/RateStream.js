@@ -29,9 +29,9 @@ class RateStream extends Transform {
       callback();
     } else {
       // calculate and push
-      let latDiff = data.latitude - this.previousData.latitude;
-      let lonDiff = data.longitude - this.previousData.longitude;
-      let timeDiff = data.timestamp - this.previousData.timestamp;
+      const latDiff = data.latitude - this.previousData.latitude;
+      const lonDiff = data.longitude - this.previousData.longitude;
+      const timeDiff = data.timestamp - this.previousData.timestamp;
 
       this.previousData = data;
 

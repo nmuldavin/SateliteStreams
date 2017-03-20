@@ -23,14 +23,13 @@ class SatelliteStream extends Readable {
    */
   _getSatInfo() {
     const url = `https://api.wheretheiss.at/v1/satellites/${this.id}`;
-    const self = this;
 
-    function handleCallResponse(error, response, body) {
+    const handleCallResponse = (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const info = JSON.parse(body);
-        self.push(info);
+        this.push(info);
       }
-    }
+    };
 
     request(url, handleCallResponse);
   }

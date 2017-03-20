@@ -17,7 +17,7 @@ describe('Satellite Stream', () => {
 
     // overridden call method
     _getSatInfo() {
-      this.count++;
+      this.count += 1;
       this.push();
     }
   }
@@ -32,12 +32,39 @@ describe('Satellite Stream', () => {
     }
 
     _write(data, encoding, callback) {
-      this.count++;
+      this.count += 1;
       callback();
     }
   }
 
+  /**
+   * Utility function to assert equality after provided time
+   * @param  {Function} getVal Function to get the value you want to check.
+   *                           Called at the time of assertion
+   * @param  {*} expectedVal Expected Value
+   * @param  {Number} time Time in ms at which to make assertion
+   */
+  const assertEqualityAtTime = (getVal, expectedVal, time) => setTimeout(
+    () => expect(getVal()).to.eql(expectedVal),
+    time
+  );
+
+  /**
+   * Array of expected api call / data emission count at a range of times in ms.
+   */
+  const expectedVals = [
+    [0, 200],
+    [1, 300],
+    [1, 450],
+    [2, 550],
+    [2, 700],
+    [3, 800],
+  ];
+
   beforeEach((done) => {
+    /**
+     * pipe fake satStream to countstream
+     */
     satStream = new FakeSatStream({ rate: 250, id: 25544 });
     countStream = new CountStream();
     satStream.pipe(countStream);
@@ -49,57 +76,37 @@ describe('Satellite Stream', () => {
     countStream = null;
   });
 
-  it('should make calls at the specified rate', (done) => {
-    setTimeout(() => {
-      expect(satStream.count).to.eql(0);
-    }, 200);
+  it('Should make calls at the specified rate', (done) => {
+    /**
+     * function that returns value of satStream count
+     */
+    const getCount = () => satStream.count;
 
-    setTimeout(() => {
-      expect(satStream.count).to.eql(1);
-    }, 300);
+    /**
+     * Assert that the number of calls made at each time is as expected
+     */
+    expectedVals.forEach(([val, time]) => assertEqualityAtTime(getCount, val, time));
 
-    setTimeout(() => {
-      expect(satStream.count).to.eql(1);
-    }, 450);
-
-    setTimeout(() => {
-      expect(satStream.count).to.eql(2);
-    }, 550);
-
-    setTimeout(() => {
-      expect(satStream.count).to.eql(2);
-    }, 700);
-
-    setTimeout(() => {
-      expect(satStream.count).to.eql(3);
-      done();
-    }, 800);
+    /**
+     * timeout after 850ms
+     */
+    setTimeout(done, 850);
   });
 
-  it('should emit data at specified rate, neglecting call delay', (done) => {
-    setTimeout(() => {
-      expect(countStream.count).to.eql(0);
-    }, 200);
+  it('Should emit data at specified rate, neglecting call delay', (done) => {
+    /**
+     * function that returns value of satStream count
+     */
+    const getCount = () => countStream.count;
 
-    setTimeout(() => {
-      expect(countStream.count).to.eql(1);
-    }, 300);
+    /**
+     * Assert that the number of calls made at each time is as expected
+     */
+    expectedVals.forEach(([val, time]) => assertEqualityAtTime(getCount, val, time));
 
-    setTimeout(() => {
-      expect(countStream.count).to.eql(1);
-    }, 450);
-
-    setTimeout(() => {
-      expect(countStream.count).to.eql(2);
-    }, 550);
-
-    setTimeout(() => {
-      expect(countStream.count).to.eql(2);
-    }, 700);
-
-    setTimeout(() => {
-      expect(countStream.count).to.eql(3);
-      done();
-    }, 800);
+    /**
+     * timeout after 850ms
+     */
+    setTimeout(done, 850);
   });
 });

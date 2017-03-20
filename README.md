@@ -28,4 +28,4 @@ A set of streams that provide and transform data from [wheretheiss.at/](http://w
 
 ###Demo
 
-For a demo run ``node example.js``.
+For a demo run ``node example``.
